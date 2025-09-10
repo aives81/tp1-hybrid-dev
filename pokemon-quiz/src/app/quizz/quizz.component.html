@@ -1,0 +1,24 @@
+<div class="quiz">
+  <div class="progress">Question {{ index + 1 }} / {{ nbQuestions }}</div>
+
+  <img
+    [src]="question.imageUrl"
+    class="silhouette"
+    [alt]="'pokemon'"
+    [ngStyle]="{ filter: feedback?.ok ? 'none' : 'grayscale(100%)' }"
+  />
+
+  <form (ngSubmit)="onSubmit()" class="form">
+    <input
+      [(ngModel)]="answr"
+      name="answr"
+      placeholder="Nom du Pokémon"
+      required
+    />
+    <button type="submit">Valider</button>
+  </form>
+
+  <div *ngIf="feedback" class="feedback" [class.ok]="feedback.ok">
+    {{ feedback.ok ? 'Bravo !' : ('Faux — c\'était ' + feedback.correctName) }}
+  </div>
+</div>

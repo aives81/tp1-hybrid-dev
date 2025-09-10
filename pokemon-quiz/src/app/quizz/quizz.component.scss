@@ -1,0 +1,91 @@
+//img.silhouette {
+//  filter: grayscale(100%) brightness(0.4) contrast(150%);
+//}
+
+
+.quiz {
+  max-width: 400px;
+  margin: 2rem auto;
+  padding: 1.5rem;
+  background: #ffffff;
+  border-radius: 1rem;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  font-family: "Segoe UI", sans-serif;
+  text-align: center;
+}
+
+.progress {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  color: #555;
+}
+
+.silhouette {
+  width: 100%;
+  max-width: 300px;
+  margin: 0 auto 1.5rem;
+  display: block;
+  border-radius: 0.5rem;
+  background: #f2f2f2;
+  object-fit: contain;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+input[name="answr"] {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  transition: border-color 0.2s;
+}
+
+input[name="answr"]:focus {
+  border-color: #007bff;
+  outline: none;
+}
+
+button {
+  padding: 0.75rem 1rem;
+  background: #007bff;
+  color: white;
+  border: none;
+  border-radius: 0.75rem;
+  font-size: 1rem;
+  font-weight: bold;
+  cursor: pointer;
+  transition: background 0.2s;
+}
+
+button:hover {
+  background: #0056b3;
+}
+
+.feedback {
+  margin-top: 1.5rem;
+  font-size: 1.1rem;
+  font-weight: bold;
+  color: #dc3545;
+}
+
+.feedback.ok {
+  color: #28a745;
+}
+
+@media (max-width: 320px) {
+  .quiz {
+    padding: 1rem;
+  }
+
+  input[name="answr"],
+  button {
+    font-size: 0.9rem;
+    padding: 0.5rem 0.75rem;
+  }
+}

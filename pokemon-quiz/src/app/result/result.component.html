@@ -1,0 +1,21 @@
+<div class="result">
+  <h2>Résultat du Quiz</h2>
+  <em>
+    {{ today | date }}
+  </em>
+  <p class="score">Tu as obtenu <strong>{{ score }}</strong> / 10</p>
+
+  <form (ngSubmit)="saveScore()" class="form">
+    <input
+      [(ngModel)]="username"
+      name="username"
+      placeholder="Ton nom ou pseudo"
+      required
+    />
+    <button type="submit">Enregistrer mon score</button>
+  </form>
+
+  <div *ngIf="saved" class="feedback ok">
+    Score enregistré ! Merci <b>{{ username }}</b> 🎉
+  </div>
+</div>

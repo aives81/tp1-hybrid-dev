@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="GradleSettings">
+    <option name="linkedExternalProjectsSettings">
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cordova-app/node_modules/cordova-android/framework" />
+        <option name="gradleJvm" value="corretto-21" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cordova-app/node_modules/cordova-android/lib/builders" />
+        <option name="gradleJvm" value="corretto-21" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cordova-app/node_modules/cordova-android/templates/project" />
+        <option name="gradleJvm" value="corretto-21" />
+      </GradleProjectSettings>
+      <GradleProjectSettings>
+        <option name="externalProjectPath" value="$PROJECT_DIR$/cordova-app/platforms/android" />
+        <option name="gradleJvm" value="corretto-21" />
+      </GradleProjectSettings>
+    </option>
+  </component>
+</project>
