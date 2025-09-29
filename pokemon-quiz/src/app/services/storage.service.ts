@@ -1,4 +1,5 @@
 import { Injectable } from '@angular/core';
+import {Gamer} from '../models/pokemon.model';
 
 declare const window: any;
 
@@ -9,13 +10,20 @@ export class StorageService {
 
   constructor() {}
 
+  private getDataDir(): string {
+    if (window.cordova && window.cordova.file) {
+      return window.cordova.file.dataDirectory;
+    }
+    throw new Error('Cordova File plugin not available yet.');
+  }
+
   // Sauvegarder un score
   saveScore(score: any): Promise<void> {
     return new Promise((resolve, reject) => {
       const data = JSON.stringify(score);
 
       // Accès au dossier "dataDirectory" (stockage persistant app)
-      window.resolveLocalFileSystemURL(window.cordova.file.dataDirectory, (dirEntry: any) => {
+      window.resolveLocalFileSystemURL(this.getDataDir(), (dirEntry: any) => {
         dirEntry.getFile(this.fileName, { create: true }, (fileEntry: any) => {
           fileEntry.createWriter((fileWriter: any) => {
             fileWriter.onwriteend = () => resolve();
@@ -32,7 +40,8 @@ export class StorageService {
   // Lire les scores
   readScores(): Promise<any[]> {
     return new Promise((resolve, reject) => {
-      window.resolveLocalFileSystemURL(window.cordova.file.dataDirectory + this.fileName, (fileEntry: any) => {
+      const path = this.getDataDir() + this.fileName;
+      window.resolveLocalFileSystemURL(path, (fileEntry: any) => {
         fileEntry.file((file: any) => {
           const reader = new FileReader();
           reader.onloadend = () => {
@@ -50,5 +59,16 @@ export class StorageService {
         resolve([]);
       });
     });
+  }
+
+  saveDataInLocalStorage(data: Gamer): void {
+    const localData = this.getDataFromLocalStorage() || [];
+    localData.push(data);
+    localStorage.setItem('gameHistory', JSON.stringify(localData));
+  }
+
+  getDataFromLocalStorage(): Gamer[] {
+    const data = localStorage.getItem('gameHistory') || '[]';
+    return data ? JSON.parse(data) : [];
   }
 }

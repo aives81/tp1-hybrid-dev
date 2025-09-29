@@ -1,1 +1,13 @@
-<p>leaderboard works!</p>
+<div class="leaderboard">
+  <h2 style="font-size: 100px;">🏆</h2>
+  <h2>Leaderboard</h2>
+  <ol>
+    @for (player of topPlayers; track player; let i = $index) {
+      <li [ngClass]="{'top1': i === 0, 'top2': i === 1, 'top3': i === 2}">
+        <span>{{ i + 1 }}. {{ player.name }}</span>
+        <span>{{ player.score }} pts</span>
+      </li>
+    }
+  </ol>
+  <button (click)="backToHome()">Retour à l'accueil</button>
+</div>

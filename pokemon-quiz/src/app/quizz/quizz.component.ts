@@ -37,6 +37,7 @@ export class QuizzComponent implements OnInit{
 
   async loadCurrent() {
     let id: number = this.pokemonService.getRandomId();
+    console.log("Index: " + this.index);
     this.pokemonService.getPokemon(id).subscribe({
       next: async (p) => {
         this.silhouetteUrl = p.sprites.regular;

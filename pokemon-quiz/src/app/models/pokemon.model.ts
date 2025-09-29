@@ -59,3 +59,9 @@ export interface Resistance {
   name: string;
   multiplier: number;
 }
+
+export interface Gamer {
+  name: string;
+  score: number;
+  date: string;
+}

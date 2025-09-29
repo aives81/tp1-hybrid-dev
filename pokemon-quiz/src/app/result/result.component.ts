@@ -2,6 +2,7 @@ import {Component, Input, OnInit} from '@angular/core';
 import {DatePipe, NgIf} from '@angular/common';
 import {FormsModule} from '@angular/forms';
 import {StorageService} from '../services/storage.service';
+import {Router} from '@angular/router';
 
 @Component({
   selector: 'app-result',
@@ -21,7 +22,8 @@ export class ResultComponent implements OnInit {
   username: string = '';
   saved: boolean = false;
 
-  constructor(private storageService: StorageService) {}
+  constructor(private storageService: StorageService,
+              private router: Router) {}
 
   ngOnInit() {
     const storedScore = localStorage.getItem('quizScore');
@@ -32,7 +34,7 @@ export class ResultComponent implements OnInit {
     const player = {
       name: this.username,
       score: this.score,
-      time: new Date().toISOString()
+      date: new Date().toISOString()
     };
 
     this.storageService.readScores().then(scores => {
@@ -40,8 +42,15 @@ export class ResultComponent implements OnInit {
       // On garde trié par score (ou temps si égalité)
       scores.sort((a, b) => b.score - a.score);
       this.storageService.saveScore(scores);
+    }).catch(error => {
+      this.storageService.saveDataInLocalStorage(player);
     });
 
     this.saved = true;
+    localStorage.removeItem('quizScore');
+
+    setTimeout(() => {
+      this.router.navigate(['/']);
+    }, 1000);
   }
 }
