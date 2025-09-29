@@ -23,9 +23,7 @@
       "android"
     ],
     "plugins": {
-      "cordova-plugin-file": {
-        "ANDROIDX_WEBKIT_VERSION": "1.4.0"
-      }
+      "cordova-plugin-file": {}
     }
   }
 }

@@ -17,11 +17,9 @@ import {Router} from '@angular/router';
 })
 export class QuizzComponent implements OnInit{
 
-  questions: Question[] = [];
   question!: Question;
-  index = 0;
+  index = 1;
   score = 0;
-  startTime = 0;
 
   nbQuestions = 10;
 
@@ -47,8 +45,6 @@ export class QuizzComponent implements OnInit{
           name: p.name.fr.toLowerCase(),
           imageUrl: p.sprites?.regular || '',
         };
-
-        console.log('Question chargée', this.question);
       },
       error: (err) => console.error('Erreur chargement pokémon', err)
     });
@@ -65,6 +61,7 @@ export class QuizzComponent implements OnInit{
   isFinished() { return this.index > this.nbQuestions; }
 
   goToResultPage() {
+    localStorage.setItem('quizScore', this.score.toString());
     this.router.navigate(['/quizz-result']);
   }
 

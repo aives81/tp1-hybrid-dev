@@ -5,7 +5,7 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
-    "cordova:prepare": "rm -rf ../cordova-app/www/* && cp -r dist/pokemon-quiz/* ../cordova-app/www/ && cd ../cordova-app && cordova prepare",
+    "cordova:prepare": "rm -rf ../cordova-app/www/* && cp -r dist/pokemon-quiz/browser/* ../cordova-app/www/ && cd ../cordova-app && cordova prepare",
     "cordova:run:browser": "npm run build && npm run cordova:prepare && cd ../cordova-app && cordova run browser",
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
